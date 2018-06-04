@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: hystrix-dashboard
+  profiles:
+    active: dev
+server:
+  port: 8100
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10000/eureka
+  instance:
+    instance-id: ${spring.application.name}:${server.port}
+    prefer-ip-address: true
+    status-page-url-path: /hystrix
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
